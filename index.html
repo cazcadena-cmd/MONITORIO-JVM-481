@@ -4,7 +4,36 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="theme-color" content="#101f2e">
-  <title>Monitoreo GPS</title>
+  <meta name="description" content="Monitorea y gestiona el GPS de tu White Car JVM-481 con comandos SMS.">
+  <meta name="application-name" content="White Car GPS">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="White Car GPS">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="color-scheme" content="dark light">
+  <link rel="canonical" href="https://cazcadena-cmd.github.io/whitecarjvm481/">
+  <link rel="manifest" href="./manifest.json">
+  <link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="./icon-512.png">
+  <link rel="apple-touch-icon" href="./icon-192.png">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_CO">
+  <meta property="og:site_name" content="White Car GPS">
+  <meta property="og:title" content="White Car GPS | JVM-481">
+  <meta property="og:description" content="Monitorea y gestiona el GPS de tu White Car JVM-481 con comandos SMS.">
+  <meta property="og:url" content="https://cazcadena-cmd.github.io/whitecarjvm481/">
+  <meta property="og:image" content="https://cazcadena-cmd.github.io/whitecarjvm481/icon-512.png">
+  <meta property="og:image:secure_url" content="https://cazcadena-cmd.github.io/whitecarjvm481/icon-512.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="512">
+  <meta property="og:image:height" content="512">
+  <meta property="og:image:alt" content="Icono de White Car GPS">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="White Car GPS | JVM-481">
+  <meta name="twitter:description" content="Monitorea y gestiona el GPS de tu White Car JVM-481 con comandos SMS.">
+  <meta name="twitter:image" content="https://cazcadena-cmd.github.io/whitecarjvm481/icon-512.png">
+  <title>White Car GPS | JVM-481</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;650;700;750;800&display=swap" rel="stylesheet">
@@ -343,6 +372,27 @@
     .modal-footer { display: flex; justify-content: center; align-items: center; gap: 5px; color: #a4b6c0; font-size: 9px; font-weight: 500; margin-top: 25px; }
     .toast { position: fixed; left: 50%; bottom: max(28px, env(safe-area-inset-bottom)); z-index: 10000; transform: translateX(-50%); width: max-content; max-width: min(430px, calc(100% - 36px)); padding: 13px 19px; border: 1px solid #e4ebf0; border-radius: 10px; background: #fff; color: #3a5362; box-shadow: 0 6px 35px #081e3040; font-size: 11px; line-height: 1.7; text-align: center; }
 
+    .install-modal { position: fixed; inset: 0; width: 100%; height: 100%; height: var(--visual-height, 100dvh); max-width: none; max-height: none; margin: 0; padding: max(20px, env(safe-area-inset-top)) max(18px, env(safe-area-inset-right)) max(20px, env(safe-area-inset-bottom)) max(18px, env(safe-area-inset-left)); border: 0; background: transparent; color: var(--ink); overflow: auto; overscroll-behavior: contain; z-index: 1200; }
+    .install-modal[open] { display: flex; align-items: center; justify-content: center; }
+    .install-modal:not([open]) { display: none; }
+    .install-modal::backdrop { background: rgba(4, 17, 29, .72); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+    .install-content { position: relative; width: 100%; max-width: 390px; max-height: 100%; padding: 29px 25px 23px; border: 1px solid rgba(255, 255, 255, .62); border-radius: 20px; background: #fff; color: #203343; box-shadow: 0 24px 100px rgba(0, 9, 21, .36); overflow-y: auto; animation: install-enter .45s cubic-bezier(.2, .7, .2, 1) both; }
+    .install-mark { display: grid; place-items: center; width: 54px; height: 54px; margin-bottom: 18px; border-radius: 16px; background: #eaf7fc; color: #4199bb; }
+    .install-mark img { width: 40px; height: 40px; object-fit: contain; }
+    .install-eyebrow { margin-bottom: 7px; color: #638ba0; font-size: 9px; font-weight: 750; letter-spacing: 1.7px; }
+    .install-content h2 { color: #203343; font-size: 25px; font-weight: 750; line-height: 1.2; letter-spacing: -.8px; }
+    .install-description { margin-top: 9px; color: #71818c; font-size: 12px; line-height: 1.7; }
+    .install-help { margin-top: 15px; padding: 12px 13px; border: 1px solid #d9eaf1; border-radius: 9px; background: #f3fafc; color: #4a6878; font-size: 11px; line-height: 1.65; }
+    .install-help strong { display: block; margin-bottom: 4px; color: #31566a; font-size: 11px; }
+    .install-actions { display: grid; grid-template-columns: 1fr auto; gap: 9px; margin-top: 20px; }
+    .install-primary, .install-later { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; border-radius: 8px; font-size: 11px; font-weight: 700; transition: background .2s, transform .2s; }
+    .install-primary { padding: 0 14px; background: #8cddf5; color: #183e50; }
+    .install-primary:hover { background: #a7e8fa; }
+    .install-later { padding: 0 14px; background: #f1f4f6; color: #72818b; }
+    .install-later:hover { background: #e8eef1; }
+    .install-primary:active, .install-later:active { transform: scale(.98); }
+    .install-footnote { margin-top: 13px; color: #9aa7af; font-size: 9px; line-height: 1.5; text-align: center; }
+
     .command-modal::backdrop {
       background: rgba(4, 17, 29, .58);
       backdrop-filter: blur(16px);
@@ -391,6 +441,7 @@
       from { opacity: 0; transform: translateY(18px) scale(.96); }
       to { opacity: 1; transform: translateY(0) scale(1); }
     }
+    @keyframes install-enter { from { opacity: 0; transform: translateY(18px) scale(.97); } to { opacity: 1; transform: translateY(0) scale(1); } }
     @keyframes ico-radar {
       0% { transform: scale(.55); opacity: .55; }
       100% { transform: scale(1.35); opacity: 0; }
@@ -685,6 +736,24 @@
 </head>
 <body>
 <main class="gps-app" id="gpsApp">
+  <dialog class="install-modal" id="installModal" aria-labelledby="installTitle" aria-describedby="installDescription">
+    <div class="install-content">
+      <div class="install-mark"><img src="./icon-192.png" alt="" width="40" height="40"></div>
+      <div class="install-eyebrow">WHITE CAR GPS</div>
+      <h2 id="installTitle">Lleva tu GPS contigo</h2>
+      <p class="install-description" id="installDescription">Instala White Car GPS para abrirla como una app y gestionar tu vehículo JVM-481 desde tu pantalla de inicio.</p>
+      <div class="install-help" id="installHelp" hidden>
+        <strong id="installHelpTitle"></strong>
+        <span id="installHelpText"></span>
+      </div>
+      <div class="install-actions">
+        <button type="button" class="install-primary" id="installNow">Instalar White Car GPS</button>
+        <button type="button" class="install-later" id="installLater">Ahora no</button>
+      </div>
+      <p class="install-footnote">La instalación es gratuita y no requiere una tienda de aplicaciones.</p>
+    </div>
+  </dialog>
+
   <div class="background-media" aria-hidden="true">
     <img class="video-poster" id="videoPoster" src="https://images.pexels.com/videos/17530622/4x4-adventure-dust-road-outdoor-adventure-17530622.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=1080&w=1920" alt="Pickup blanca en acción" />
     <video class="background-video" id="backgroundVideo" autoplay muted loop playsinline preload="auto">
@@ -814,7 +883,7 @@
             </span>
             <div class="gps-found-copy">
               <small>Control vehicular</small>
-              <strong>Vehículo encontrado: <span id="panelPlate">JVM481</span></strong>
+              <strong>Vehículo encontrado: <span id="panelPlate">JVM-481</span></strong>
               <p>Gestionar GPS de vehículo con comandos SMS es mas seguro y real.</p>
             </div>
           </div>
@@ -993,7 +1062,7 @@ const CONFIG = {
     "KOK070": "3009923861", "UFX970": "3019815881", "THS347": "3008471047", "GRK191": "3019815879",
     "LCN407": "3112419764", "JTQ667": "3018609023", "LZO087": "3019237513", "LUL305": "3009032969",
     "GVK020": "3045314857", "GRK323": "3001075393", "KOL704": "3004783240", "KOL703": "3019815874",
-    "LUM435": "3019815896", "JVM481": "3244650160", "TAL322": "3019236976", "WNW905": "3009032832",
+    "LUM435": "3019815896", "TAL322": "3019236976", "WNW905": "3009032832",
     "LJT951": "3019031525", "NOW257": "3002774283", "LJT975": "3008584835", "LPY935": "3009031583",
     "NHT602": "3044287373", "WGO321": "3019031523", "UFX881": "3006935726", "NHT426": "3001092470",
     "JTQ005": "3018136844", "GUW715": "3009033003", "GIL918": "3009681130", "SPD787": "3006828803",
@@ -1029,10 +1098,94 @@ function notify(m) {
   window._tt = setTimeout(() => $('toast').hidden = true, 4500);
 }
 
+// PWA installation uses the native prompt where available and platform guidance otherwise.
+const installModal = $('installModal');
+const installNow = $('installNow');
+const installHelp = $('installHelp');
+const INSTALL_KEY = 'whitecar-gps-installed';
+let deferredInstallPrompt = null;
+let installInstructionsVisible = false;
+
+function isInstalledApp() {
+  let remembered = false;
+  try { remembered = localStorage.getItem(INSTALL_KEY) === 'true'; } catch (error) {}
+  return remembered || window.navigator.standalone === true || window.matchMedia('(display-mode: standalone)').matches;
+}
+
+function rememberInstallation() {
+  try { localStorage.setItem(INSTALL_KEY, 'true'); } catch (error) {}
+}
+
+function showInstallPrompt() {
+  if (isInstalledApp()) return;
+  window.setTimeout(() => {
+    if (!isInstalledApp() && !installModal.open) installModal.showModal();
+  }, 650);
+}
+
+window.addEventListener('beforeinstallprompt', event => {
+  event.preventDefault();
+  deferredInstallPrompt = event;
+  installNow.textContent = 'Instalar White Car GPS';
+});
+
+window.addEventListener('appinstalled', () => {
+  rememberInstallation();
+  deferredInstallPrompt = null;
+  if (installModal.open) installModal.close();
+});
+
+installNow.onclick = async () => {
+  if (installInstructionsVisible) {
+    installModal.close();
+    return;
+  }
+
+  if (deferredInstallPrompt) {
+    const promptEvent = deferredInstallPrompt;
+    deferredInstallPrompt = null;
+    await promptEvent.prompt();
+    const choice = await promptEvent.userChoice;
+    if (choice && choice.outcome === 'accepted') {
+      installModal.close();
+    }
+    return;
+  }
+
+  const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  const isAndroid = /android/i.test(navigator.userAgent);
+  $('installHelpTitle').textContent = isIOS
+    ? 'Instalación en iPhone o iPad'
+    : isAndroid
+      ? 'Instalación en Android'
+      : 'Instalar desde el navegador';
+  $('installHelpText').textContent = isIOS
+    ? 'En Safari, toca Compartir y selecciona “Añadir a pantalla de inicio”. Luego confirma con “Añadir”.'
+    : isAndroid
+      ? 'En Chrome, abre el menú ⋮ y selecciona “Instalar aplicación” o “Añadir a pantalla de inicio”.'
+      : 'Abre el menú de tu navegador y selecciona “Instalar White Car GPS” o “Añadir a pantalla de inicio”.';
+  installHelp.hidden = false;
+  installInstructionsVisible = true;
+  installNow.textContent = 'Entendido';
+};
+
+$('installLater').onclick = () => installModal.close();
+installModal.addEventListener('click', event => {
+  if (event.target === installModal) installModal.close();
+});
+showInstallPrompt();
+
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./sw.js', { scope: './' }).catch(() => {});
+  });
+}
+
 // Background Video Management
 const video = $('backgroundVideo');
 const videoBtn = $('toggleVideo');
 let videoFailed = false;
+const VIDEO_PLAYBACK_RATE = 1.25;
 
 function videoControl() {
   if (!video) return;
@@ -1042,6 +1195,8 @@ function videoControl() {
 }
 
 if (video) {
+  video.defaultPlaybackRate = VIDEO_PLAYBACK_RATE;
+  video.playbackRate = VIDEO_PLAYBACK_RATE;
   video.addEventListener('playing', () => {
     videoFailed = false;
     video.classList.add('is-playing');
@@ -1060,6 +1215,7 @@ if (video) {
 
   const tryPlay = () => {
     video.muted = true;
+    video.playbackRate = VIDEO_PLAYBACK_RATE;
     const playPromise = video.play();
     if (playPromise !== undefined) {
       playPromise
@@ -1080,6 +1236,7 @@ if (video) {
 
   videoBtn.onclick = () => {
     if (video.paused) {
+      video.playbackRate = VIDEO_PLAYBACK_RATE;
       video.play().then(() => {
         video.classList.add('is-playing');
         videoControl();
@@ -1193,17 +1350,18 @@ $('gpsSheetBackdrop').onclick = () => closeGpsSheet();
 
 $('plateForm').onsubmit = e => {
   e.preventDefault();
-  const p = input.value.trim().toUpperCase().replace(/s+/g, '');
-  input.value = p;
+  const p = input.value.trim().toUpperCase().replace(/[\s-]+/g, '');
+  input.value = p === 'JVM481' ? 'JVM-481' : p;
   const phone = CONFIG.plates[p];
   $('result').hidden = false;
 
   if (phone) {
     selectedPlate = p;
-    $('pageTitle').innerHTML = p + ' <span>GPS</span>';
-    $('panelPlate').textContent = p;
+    const displayPlate = p === 'JVM481' ? 'JVM-481' : p;
+    $('pageTitle').innerHTML = displayPlate + ' <span>GPS</span>';
+    $('panelPlate').textContent = displayPlate;
     $('result').classList.remove('is-error');
-    $('resultText').textContent = 'Vehículo encontrado: ' + p;
+    $('resultText').textContent = 'Vehículo encontrado: ' + displayPlate;
     $('manageGpsBtn').hidden = false;
   } else {
     $('result').classList.add('is-error');
